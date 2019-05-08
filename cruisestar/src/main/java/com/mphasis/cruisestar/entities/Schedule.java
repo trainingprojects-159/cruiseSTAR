@@ -2,6 +2,7 @@ package com.mphasis.cruisestar.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -10,13 +11,13 @@ public class Schedule {
 	@Id
 	
 	private String scheduleid;
-	private String currentdate;	
 	private String bookingdate;
-	private String scheduledays;
+	private String scheduledate;
 	
-	private Ship shipid; //fk
+	
 
 	@OneToOne
+	@JoinColumn(name="shipud")
 	private Ship ship;
 	
 
@@ -30,14 +31,7 @@ public class Schedule {
 	}
 
 
-	public String getCurrentdate() {
-		return currentdate;
-	}
-
-
-	public void setCurrentdate(String currentdate) {
-		this.currentdate = currentdate;
-	}
+	
 
 
 	public String getBookingdate() {
@@ -50,24 +44,20 @@ public class Schedule {
 	}
 
 
-	public String getScheduledays() {
-		return scheduledays;
+	
+
+
+	public String getScheduledate() {
+		return scheduledate;
 	}
 
 
-	public void setScheduledays(String scheduledays) {
-		this.scheduledays = scheduledays;
+	public void setScheduledate(String scheduledate) {
+		this.scheduledate = scheduledate;
 	}
 
 
-	public Ship getShipid() {
-		return shipid;
-	}
 
-
-	public void setShipid(Ship shipid) {
-		this.shipid = shipid;
-	}
 
 
 	public Ship getShip() {

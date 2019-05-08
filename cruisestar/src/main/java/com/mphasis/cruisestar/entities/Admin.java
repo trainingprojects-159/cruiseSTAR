@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,19 +14,19 @@ public class Admin {
 	private String password;
 
 	
-	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Ship> ships;
 	
-	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Customer> customers;
 	
-	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Route> routes;
 	
-	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Passenger> passengers;
 	
-	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Admin",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Location> locations;
 	
 	

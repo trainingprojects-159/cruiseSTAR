@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,19 +23,20 @@ public class Ship {
 	private int reservecapacity;
 	private double travelduration;
 
-	private Route routeid; // fk
-
 	
 	@OneToOne
+	@JoinColumn(name="scheduleid")
 	private Schedule schedule;
 	
 	@OneToMany(mappedBy="Ship",cascade=CascadeType.ALL)
 	private List<Passenger> passengers;
 	
 	@ManyToOne
+	@JoinColumn(name="adminid")
 	private Admin admin;
 	
 	@OneToOne
+	@JoinColumn(name="routeid")
 	private Route route;
 	
 	
@@ -79,13 +81,7 @@ public class Ship {
 		this.travelduration = travelduration;
 	}
 
-	public Route getRouteid() {
-		return routeid;
-	}
 
-	public void setRouteid(Route routeid) {
-		this.routeid = routeid;
-	}
 
 	public Schedule getSchedule() {
 		return schedule;

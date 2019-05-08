@@ -1,5 +1,7 @@
 package com.mphasis.cruisestar.daoimpl;
 
+import java.util.List;
+
 import com.mphasis.cruisestar.daos.RouteDao;
 import com.mphasis.cruisestar.entities.Route;
 
@@ -28,6 +30,11 @@ public class RouteDaoImpl implements RouteDao {
 	public void getRouteById(int routeid) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public List<Route> viewSchedule(String source, String destination) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -24,13 +25,13 @@ public class Passenger {
 
 	
 	
-	@OneToMany(mappedBy="Passenger",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="Passenger",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
 	
 	@ManyToOne
 	private Admin admin;
 	
-	@ManyToMany(mappedBy="Passenger",cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="Passenger",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	private Ship ships;
 	
 	

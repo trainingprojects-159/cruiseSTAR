@@ -15,4 +15,9 @@ public class PassengerDaoImpl implements PassengerDao {
 
 	}
 
+	public void addPassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

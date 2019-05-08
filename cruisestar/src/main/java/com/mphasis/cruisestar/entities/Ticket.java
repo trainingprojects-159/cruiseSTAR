@@ -1,14 +1,9 @@
 package com.mphasis.cruisestar.entities;
 
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-
 
 @Entity
 public class Ticket {
@@ -16,16 +11,29 @@ public class Ticket {
 	@Id
 	private String ticketid;
 	private String status;
+	private String currentdate;	
 	
-	private String scheduleid; //fk
-	private String aadharno; //fk
-	private String routeid; //fk
+	public String getCurrentdate() {
+		return currentdate;
+	}
+	public void setCurrentdate(String currentdate) {
+		this.currentdate = currentdate;
+	}
+	@ManyToOne
+	@JoinColumn(name="scheduleid")
+	private Schedule scheduleid; //fk
+	
+	@ManyToOne
+	@JoinColumn(name="routeid")
+	private Route routeid; //fk
 	
 	
 	@ManyToOne
+	@JoinColumn(name="customerid")
 	private Customer customer;
 	
 	@ManyToOne
+	@JoinColumn(name="aadharno")
 	private Passenger passengers;
 	
 	
@@ -41,22 +49,17 @@ public class Ticket {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getScheduleid() {
+	
+	public Schedule getScheduleid() {
 		return scheduleid;
 	}
-	public void setScheduleid(String scheduleid) {
+	public void setScheduleid(Schedule scheduleid) {
 		this.scheduleid = scheduleid;
 	}
-	public String getAadharno() {
-		return aadharno;
-	}
-	public void setAadharno(String aadharno) {
-		this.aadharno = aadharno;
-	}
-	public String getRouteid() {
+	public Route getRouteid() {
 		return routeid;
 	}
-	public void setRouteid(String routeid) {
+	public void setRouteid(Route routeid) {
 		this.routeid = routeid;
 	}
 	public Customer getCustomer() {

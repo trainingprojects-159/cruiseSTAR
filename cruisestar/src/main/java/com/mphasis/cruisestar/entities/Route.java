@@ -3,6 +3,7 @@ package com.mphasis.cruisestar.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -22,12 +23,13 @@ public class Route {
 
 	
 	@OneToOne
+	@JoinColumn(name="location_id")
 	private Location location;
 	
 	@ManyToOne
 	private Admin admin;
 	
-	@OneToOne
+	@OneToOne()
 	private Ship ship;
 	
 	

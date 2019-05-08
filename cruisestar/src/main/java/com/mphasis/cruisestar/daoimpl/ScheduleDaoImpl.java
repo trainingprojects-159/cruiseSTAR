@@ -1,5 +1,7 @@
 package com.mphasis.cruisestar.daoimpl;
 
+import java.util.List;
+
 import com.mphasis.cruisestar.daos.ScheduleDao;
 import com.mphasis.cruisestar.entities.Schedule;
 
@@ -20,7 +22,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
 	}
 
-	public Schedule getAllSchedules() {
+	public List<Schedule> getAllSchedules() {
 		// TODO Auto-generated method stub
 		return null;
 	}
