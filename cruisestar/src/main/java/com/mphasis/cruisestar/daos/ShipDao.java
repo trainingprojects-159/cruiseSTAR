@@ -1,0 +1,14 @@
+package com.mphasis.cruisestar.daos;
+
+import com.mphasis.cruisestar.entities.Ship;
+
+public interface ShipDao {
+
+	public void addShip(Ship ship);
+	public void editShip(Ship ship);
+	public void deleteShip(int shipid);
+	public Ship getAllShips();
+	public void getShipById(int shipid);
+	
+	
+}
