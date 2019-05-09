@@ -1,7 +1,5 @@
 package com.mphasis.cruisestar.daos;
 
-import java.util.List;
-
 import com.mphasis.cruisestar.entities.Ticket;
 
 public interface TicketDao {
@@ -10,7 +8,7 @@ public interface TicketDao {
 	
 	public void cancelTicket(int ticketid);
 	
-	public List<Ticket> getTicketById(int ticketid);
+	public Ticket getTicketById(int ticketid);
 	
 	
 }
