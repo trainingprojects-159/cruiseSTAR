@@ -3,6 +3,7 @@ package com.mphasis.cruisestar.daos;
 import java.util.List;
 
 import com.mphasis.cruisestar.entities.Schedule;
+/*import com.mphasis.cruisestar.entities.Ship;*/
 
 public interface ScheduleDao {
 
@@ -10,7 +11,8 @@ public interface ScheduleDao {
 	
 	public List<Schedule> getAllSchedules();
 	
-	public void getScheduleById(int scheduleid);
+	public Schedule getScheduleById(int scheduleid);
 	
-	
+	/*public List<Ship> getShipByScheduleId(int scheduleid);
+	*/
 }

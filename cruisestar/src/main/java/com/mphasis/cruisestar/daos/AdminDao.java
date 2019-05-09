@@ -6,3 +6,4 @@ public interface AdminDao {
 	public boolean login(String adminname,String password);	
 
 }
+ 

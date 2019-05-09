@@ -13,6 +13,7 @@ public class Location {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	
 	private int locationid;
 	private String locationname;
 	

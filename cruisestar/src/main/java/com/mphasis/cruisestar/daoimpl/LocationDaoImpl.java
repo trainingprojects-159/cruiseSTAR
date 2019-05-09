@@ -8,11 +8,11 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mphasis.cruisestar.daos.ScheduleDao;
-import com.mphasis.cruisestar.entities.Schedule;
+import com.mphasis.cruisestar.daos.LocationDao;
+import com.mphasis.cruisestar.entities.Location;
 
 @Repository
-public class ScheduleDaoImpl implements ScheduleDao {
+public class LocationDaoImpl implements LocationDao {
 
 	
 	@Autowired
@@ -25,51 +25,52 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	
-	public void addSchedule(Schedule schedule) {
+	public void addLocation(Location location) {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		System.out.println(schedule.getScheduledate()+"Schedule date is ");
-		session.save(schedule);
+		System.out.println(location.getLocationname()+"Location name is ");
+		session.save(location);
 		tr.commit();
 
 	}
 
-	public void editSchedule(Schedule schedule) {
+	public void editLocation(Location location) {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		session.update(schedule);
+		session.update(location);
 		tr.commit();
 	}
 
-	public void deleteSchedule(int scheduleid) {
+	public void deleteLocation(int locationid) {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		Schedule e=(Schedule)session.get(Schedule.class,scheduleid);
+		Location e=(Location)session.get(Location.class,locationid);
 		session.delete(e);
 		tr.commit();
 
 	}
 
-	public List<Schedule> getAllSchedules() {
+	public List<Location> getAllLocations() {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Schedule> schedule=session.createCriteria(Schedule.class).list();
+		List<Location> location=session.createCriteria(Location.class).list();
 		tr.commit();
-		return schedule;
+		return location;
+		
 	}
 
-	public Schedule getScheduleById(int scheduleid) {
+	public Location getLocationById(int locationid) {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		Schedule schedule=(Schedule)session.get(Schedule.class,scheduleid);
+		Location location=(Location)session.get(Location.class,locationid);
 		tr.commit();
-		return schedule;
+		
+		return location;
 
 	}
 }
-

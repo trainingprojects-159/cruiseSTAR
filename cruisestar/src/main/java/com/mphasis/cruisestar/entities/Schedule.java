@@ -9,15 +9,12 @@ import javax.persistence.OneToOne;
 public class Schedule {
 	
 	@Id
-	
 	private String scheduleid;
 	private String bookingdate;
 	private String scheduledate;
-	
-	
 
 	@OneToOne
-	@JoinColumn(name="shipud")
+	@JoinColumn(name="shipid")
 	private Ship ship;
 	
 

@@ -1,10 +1,10 @@
-package com.mphasis.cruisestar.daos;
+package com.mphasis.cruisestar.services;
 
 import java.util.List;
 
 import com.mphasis.cruisestar.entities.Location;
 
-public interface LocationDao {
+public interface LocationService {
 
 	public void addLocation(Location location);
 	public void editLocation(Location location);
