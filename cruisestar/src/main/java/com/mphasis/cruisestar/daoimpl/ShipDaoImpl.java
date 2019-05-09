@@ -68,18 +68,28 @@ public  class ShipDaoImpl implements ShipDao {
 	}
 
 	public Ship getAllShips() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session =sessionfactory.openSession();
+		Transaction tr=session.beginTransaction();
+		List<Ship> ship=session.createCriteria(Ship.class).list();
+		tr.commit();
+		session.close();
+		return ship;
 	}
 
 	public List<Ship> searchShips(Ship ship) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionfactory.openSession();
+		Transaction tr=session.beginTransaction();
+		List<Ship> s=session.createCriteria(Ship.class).list();
+		tr.commit();
+		return s;
 	}
 
 	public List<Ship> searchBySchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionfactory.openSession();
+		Transaction tr= session.beginTransaction();
+		Ship ships = session.get(Ship.class, scheduleid);
+		tr.commit();
+		return ships;
 	}
 
 }
