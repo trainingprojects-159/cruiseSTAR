@@ -1,5 +1,7 @@
 package com.mphasis.cruisestar.daoimpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -9,12 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mphasis.cruisestar.daos.ShipDao;
+import com.mphasis.cruisestar.entities.Schedule;
 import com.mphasis.cruisestar.entities.Ship;
 
 
 @Repository
 @Transactional
-public abstract class ShipDaoImpl implements ShipDao {
+public  class ShipDaoImpl implements ShipDao {
 	@Autowired
 	SessionFactory sessionfactory;
 
@@ -62,6 +65,21 @@ public abstract class ShipDaoImpl implements ShipDao {
 		tr.commit();
 		return  ;
 
+	}
+
+	public Ship getAllShips() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Ship> searchShips(Ship ship) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Ship> searchBySchedule(Schedule schedule) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
