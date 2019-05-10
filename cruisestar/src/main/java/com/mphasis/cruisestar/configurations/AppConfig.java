@@ -25,21 +25,12 @@ import com.mphasis.cruisestar.entities.*;
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
 @ComponentScan(basePackages="com.mphasis.cruisestar.*")
-
 public class AppConfig {
 
-	/*@Bean
-	public InternalResourceViewResolver getViewResolver() {
-		InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/jsps/");
-		viewResolver.setSuffix(".jsp");
-		return viewResolver;
-	}*/
 	
 	@Bean
 	public DriverManagerDataSource getDatSource() { 
 	DriverManagerDataSource ds=new DriverManagerDataSource();
-	
 	ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 	ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
 	ds.setUsername("cruisestar");
@@ -54,12 +45,6 @@ public class AppConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(getDatSource());
 		sessionFactory.setPackagesToScan("com.mphasis.cruisestar.entities");
-		
-		/*sessionFactory.setAnnotatedClasses(Fuser.class);
-		sessionFactory.setAnnotatedClasses(Car.class);
-		sessionFactory.setAnnotatedClasses(Employee.class);
-		sessionFactory.setAnnotatedClasses(Department.class);
-		*/
 		sessionFactory.setAnnotatedClasses(Admin.class);
 		sessionFactory.setAnnotatedClasses(Customer.class);
 		sessionFactory.setAnnotatedClasses(Location.class);
@@ -68,7 +53,6 @@ public class AppConfig {
 		sessionFactory.setAnnotatedClasses(Schedule.class);
 		sessionFactory.setAnnotatedClasses(Ship.class);
 		sessionFactory.setAnnotatedClasses(Ticket.class);
-		
 		Properties properties=new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
 		properties.put("hibernate.hbm2ddl.auto", "update");

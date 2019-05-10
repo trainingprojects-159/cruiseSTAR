@@ -4,15 +4,29 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.cruisestar.util.StringPrefixedSequenceIdGenerator;
 
 @Entity
 public class Customer {
 
 	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Cust_seq")
+    @GenericGenerator(
+        name = "Cust_seq", 
+        strategy = "org.thoughts.on.java.generators.StringPrefixedSequenceIdGenerator", 
+        parameters = {
+            @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "10"),
+            @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "CU"),
+            @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
 	private String customerid;
 	private String username;
 	private String dob;

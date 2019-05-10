@@ -8,6 +8,6 @@ public interface ScheduleService {
 
 	public List<Schedule> getSchedules();
 	public void addSchedule(Schedule s);
-	public Schedule getById(int empno);
+	public Schedule getById(int scheduleid);
 	
 }

@@ -2,9 +2,12 @@ package com.mphasis.cruisestar.daoimpl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -57,9 +60,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Schedule> schedule=session.createCriteria(Schedule.class).list();
+		List<Schedule> schedules=session.createQuery("from Schedule",Schedule.class).list();
 		tr.commit();
-		return schedule;
+		return schedules;
 	}
 
 	public Schedule getScheduleById(int scheduleid) {

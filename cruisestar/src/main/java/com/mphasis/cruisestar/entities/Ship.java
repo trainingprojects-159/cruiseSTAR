@@ -4,11 +4,18 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.cruisestar.util.StringPrefixedSequenceIdGenerator;
 
 
 
@@ -16,7 +23,14 @@ import javax.persistence.OneToOne;
 public class Ship {
 
 	@Id
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Ship_seq")
+    @GenericGenerator(
+        name = "Ship_seq", 
+        strategy = "org.thoughts.on.java.generators.StringPrefixedSequenceIdGenerator", 
+        parameters = {
+            @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "10"),
+            @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "SH"),
+            @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
 	private String shipid;
 	private String shipname;
 	private int seatcapacity;

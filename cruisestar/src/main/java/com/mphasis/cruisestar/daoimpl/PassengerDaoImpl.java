@@ -27,7 +27,7 @@ public class PassengerDaoImpl implements PassengerDao {
 	public List<Passenger> getAllPassengers() {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		List<Passenger> passengers = session.createCriteria(Passenger.class).list();
+		List<Passenger> passengers = session.createQuery("from Passenger",Passenger.class).list();
 		transaction.commit();
 		session.close();
 		return passengers;

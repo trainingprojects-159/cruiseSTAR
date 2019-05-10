@@ -1,5 +1,6 @@
 package com.mphasis.cruisestar.services;
 
+
 import java.util.List;
 
 import com.mphasis.cruisestar.entities.Schedule;
@@ -12,8 +13,8 @@ public interface ShipServices {
 	public void deleteShip(int shipid);
 	public List<Ship> getAllShips();
 	public Ship getShipById(int shipid);
-	public List<Ship> searchShips(Ship ship);
-	public Ship searchBySchedule(int scheduleid);
+	public List<Ship> searchShips(String source,String destination);
+	public List<Ship> searchBySchedule(Schedule schedule);
 	
 	
 }

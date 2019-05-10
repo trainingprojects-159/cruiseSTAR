@@ -53,7 +53,7 @@ public class RouteDaoImpl implements RouteDao {
 	public List<Route> getAllRoutes() {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Route> routes=session.createCriteria(Route.class).list();
+		List<Route> routes=session.createQuery("from Route",Route.class).list();
 		tr.commit();
 		return  routes;
 	}
@@ -67,16 +67,21 @@ public class RouteDaoImpl implements RouteDao {
 	}
 
 	public List<Route> viewSchedule(String source, String destination) {
-		Session session=sessionFactory.openSession();
-		Transaction tr=session.beginTransaction();
-		Criteria criteria=session.createCriteria(Route.class);
-		criteria.add(Restrictions.eq("source",source));
-		criteria.add(Restrictions.eq("destination",destination));
-		List<Route> routes=criteria.list();	
-		tr.commit();
-		return routes;
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//public List<Route> viewSchedule(String source, String destination) {
+	//	Session session=sessionFactory.openSession();
+		//Transaction tr=session.beginTransaction();
+//		Criteria criteria=session.createCriteria(Route.class);
+//		criteria.add(Restrictions.eq("source",source));
+//		criteria.add(Restrictions.eq("destination",destination));
+//		criteria.add(Restrictions.and(source, destination));
+//		List<Route> routes=criteria.list();	
+	//	tr.commit();
+	//	return routes;
 	
 	
 	}
 
-}

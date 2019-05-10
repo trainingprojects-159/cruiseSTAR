@@ -5,7 +5,7 @@ import com.mphasis.cruisestar.entities.Ticket;
 public interface TicketService {
 	
 
-	public void bookTicket(Ticket ticket);
+	public Ticket bookTicket(Ticket ticket);
 	
 	public void cancelledTicket(int ticketid);
 	

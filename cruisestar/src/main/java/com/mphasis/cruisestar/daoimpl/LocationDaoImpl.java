@@ -57,7 +57,7 @@ public class LocationDaoImpl implements LocationDao {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Location> location=session.createCriteria(Location.class).list();
+		List<Location> location=session.createQuery("from Location",Location.class).list();
 		tr.commit();
 		return location;
 		

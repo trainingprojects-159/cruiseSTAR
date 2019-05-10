@@ -1,4 +1,6 @@
 package com.mphasis.cruisestar.daoimpl;
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	public boolean login(String username, String password) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Customer where username=:username and password=:password");
+		TypedQuery<Customer> query = session.createQuery("from Customer where username=:username and password=:password");
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		int i=query.executeUpdate();
@@ -37,4 +39,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		tr.commit();
 		return customer;
 		}
+  
+  
+  
 	}
