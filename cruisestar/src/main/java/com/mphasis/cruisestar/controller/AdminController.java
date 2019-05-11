@@ -78,7 +78,7 @@ public class AdminController {
 		this.shipServices.addShip(ship);
 	}
 
-	@RequestMapping(value = "/ship", method = RequestMethod.PUT)
+	@RequestMapping(value = "/ship/edit", method = RequestMethod.PUT)
 	public void editShip(@RequestBody Ship ship) {
 		this.shipServices.editShip(ship);
 	}

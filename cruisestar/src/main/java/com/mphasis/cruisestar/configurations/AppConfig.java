@@ -62,12 +62,12 @@ public class AppConfig {
 		return sessionFactory;
 	}
 	
-	@Bean
+	/*@Bean
 	public HibernateTransactionManager getHibernateTransactionManger(SessionFactory s) {
 		HibernateTransactionManager hibernateTransactionManager=new HibernateTransactionManager();
 		hibernateTransactionManager.setSessionFactory(s);
 		return hibernateTransactionManager;
-	}
+	}*/
 	
 	@Bean
 	public WebMvcConfigurer corsConfigurer()

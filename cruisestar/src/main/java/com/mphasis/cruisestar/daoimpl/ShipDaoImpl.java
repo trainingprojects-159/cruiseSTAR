@@ -91,8 +91,6 @@ public List<Ship> searchShips(String source,String destination) {
 // 	cr.add(Restrictions.eq("destination", destination));
 // 	cr.add(Restrictions.and(source,destination));
 // 	
-  
- 	
  tr.commit();
  return s;
 }
