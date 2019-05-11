@@ -1,18 +1,21 @@
 package com.mphasis.cruisestar1.testcasefordaoimpl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mphasis.cruisestar.daos.AdminDao;
+import com.mphasis.cruisestar.daos.PassengerDao;
 import com.mphasis.cruisestar.entities.Admin;
 
 public class TestAdminDao {
 	
 	@Autowired
 	AdminDao adminDao;
-	
+	@Autowired
+	PassengerDao passengerDao; 
 
 	@Test(expected=NullPointerException.class)
 	public void test() {
