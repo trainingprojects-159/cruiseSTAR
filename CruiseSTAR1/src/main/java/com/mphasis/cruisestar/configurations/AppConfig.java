@@ -2,13 +2,16 @@ package com.mphasis.cruisestar.configurations;
 
 import java.util.Properties;
 
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,6 +23,7 @@ import com.mphasis.cruisestar.entities.*;
 
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages="com.mphasis.cruisestar.*")
 public class AppConfig {
@@ -59,12 +63,12 @@ public class AppConfig {
 		return sessionFactory;
 	}
 	
-	/*@Bean
-	public HibernateTransactionManager getHibernateTransactionManger(SessionFactory s) {
+	@Bean
+	public HibernateTransactionManager getHibernateTransactionManager(SessionFactory s) {
 		HibernateTransactionManager hibernateTransactionManager=new HibernateTransactionManager();
 		hibernateTransactionManager.setSessionFactory(s);
 		return hibernateTransactionManager;
-	}*/
+	}
 	
 	@Bean
 	public WebMvcConfigurer corsConfigurer()

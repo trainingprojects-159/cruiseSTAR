@@ -1,15 +1,27 @@
 package com.mphasis.cruisestar1.testcasefordaoimpl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+
+import javax.transaction.Transactional;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.mphasis.cruisestar.configurations.AppConfig;
 import com.mphasis.cruisestar.daos.AdminDao;
 import com.mphasis.cruisestar.daos.PassengerDao;
 import com.mphasis.cruisestar.entities.Admin;
+import com.mphasis.cruisestar.exceptions.ShipException;
 
+
+@RunWith(SpringJUnit4ClassRunner.class) // spring provides junit
+@ContextConfiguration(classes = AppConfig.class)
+@WebAppConfiguration 
+@Transactional // insert ... operations used 
 public class TestAdminDao {
 	
 	@Autowired
@@ -17,18 +29,24 @@ public class TestAdminDao {
 	@Autowired
 	PassengerDao passengerDao; 
 
-	@Test(expected=NullPointerException.class)
-	public void test() {
-		Admin admin=adminDao.login("ss", "123");
+	@Test
+	public void test() throws ShipException{
+		/*Admin admin=adminDao.login("ss", "123");
 		assertNull(admin);
+		*/
+		Admin admin=adminDao.login("Admin", "123");
+		assertEquals(admin.getAdminname(),"Admin");
+		assertEquals(admin.getPassword(),"123");
 		
-		Admin admin1=adminDao.login("Supriya", "46778");
-		assertEquals(admin1.getAdminname(), "Supriya");
-		assertEquals(admin1.getPassword(), "46778");
 		
-		Admin admin2=adminDao.login("Supriya", "46778");
-		assertEquals(admin2.getAdminname(), "Supriya");
-		assertEquals(admin2.getPassword(), "467791");
+		Admin adm = new Admin();
+		adm.setAdminname("Admin1");
+		adm.setPassword("123");
+		
+		adminDao.login("Admin1", "123");
+		assertEquals(admin.getAdminname(), "Admin1");
+		assertEquals(admin.getPassword(), "123");
+		
 	}
 
 }

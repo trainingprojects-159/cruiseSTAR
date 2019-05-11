@@ -16,6 +16,7 @@ import com.mphasis.cruisestar.entities.Passenger;
 import com.mphasis.cruisestar.entities.Schedule;
 import com.mphasis.cruisestar.entities.Ship;
 import com.mphasis.cruisestar.entities.Ticket;
+import com.mphasis.cruisestar.exceptions.ShipException;
 import com.mphasis.cruisestar.services.CustomerServices;
 import com.mphasis.cruisestar.services.PassengerService;
 import com.mphasis.cruisestar.services.ScheduleService;
@@ -42,26 +43,26 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/ships", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Ship> getAllShip()
+	public List<Ship> getAllShip() throws ShipException
 	{
 		return this.shipServices.getAllShips();
 	}
 	
 	@RequestMapping(value="/schedules", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Schedule> getAllSchedules()
+	public List<Schedule> getAllSchedules() throws ShipException
 	{ 
 		return this.scheduleService.getSchedules();
 	}
 	
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public Customer registerCustomer(@RequestBody Customer customer) {
+	public Customer registerCustomer(@RequestBody Customer customer) throws ShipException {
 		return this.customerServices.registerServices(customer);
 		 
 	}
 	
 	@RequestMapping(value = "/login/{username}/{password}", method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public boolean loginCustomer(@PathVariable("username") String username, @PathVariable("password") String password) 
+	public boolean loginCustomer(@PathVariable("username") String username, @PathVariable("password") String password) throws ShipException
 	{
 		 return this.customerServices.loginServices(username, password);
 	
@@ -70,20 +71,20 @@ public class CustomerController {
 	}	
 	
 	@RequestMapping(value="/passenger/add", method = RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public void addPassenger(@RequestBody Passenger passenger)
+	public void addPassenger(@RequestBody Passenger passenger) throws ShipException
 	{
 		this.passengerService.insertPassenger(passenger);
 	}
 	
 	
 	@RequestMapping(value="/passengers", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Passenger> getAllPassengers()
+	public List<Passenger> getAllPassengers() throws ShipException
 	{
 		return this.passengerService.getAllPassengersList();
 	}
 	
 	@RequestMapping(value="/ticket/add", method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-	public void bookTicket(Ticket ticket)
+	public void bookTicket(Ticket ticket) throws ShipException
 	{
 		 this.ticketService.bookTicket(ticket);
 	}
@@ -105,7 +106,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value="/ticket/{tickteId}", method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
-	public void cancelTicket(@PathVariable("tickteId")int ticketid)
+	public void cancelTicket(@PathVariable("tickteId")int ticketid) throws ShipException
 	{
 		 this.ticketService.cancelledTicket(ticketid);
 	}
