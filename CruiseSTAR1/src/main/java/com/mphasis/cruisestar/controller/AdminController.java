@@ -136,11 +136,12 @@ public class AdminController {
 		this.scheduleService.addSchedule(schedule);
 	}
 
-	/*
-	 * @RequestMapping(value="/schedule/delete",method=RequestMethod.DELETE) public
-	 * void deleteSchedule(int scheduleid) {
-	 * this.scheduleService.deleteSchedule(scheduleid); }
-	 */
+	
+	 @RequestMapping(value="/schedule/edit",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE) 
+	 public void editSchedule(Schedule schedule) {
+	 this.scheduleService.editSchedule(schedule);
+	 }
+
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public void getAllSchedule() {
@@ -150,24 +151,24 @@ public class AdminController {
 	
 	//location
 	
-	@RequestMapping(value = "/location/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/location/add", method = RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
 	public void addLocation(@RequestBody Location location) {
 		
 		this.locationService.addLocation(location);
 	}
 	
-	@RequestMapping(value = "/location/{locationid}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/location/{locationid}", method = RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
 	public void editLocation(@PathVariable("locationid") int locationid, @RequestBody Location location)
 	{
 	this.locationService.editLocation(location);
 	}
 
-	@RequestMapping(value = "/location/{locationid}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/location/{locationid}", method = RequestMethod.DELETE,produces=MediaType.APPLICATION_JSON_VALUE)
 	public void deleteLocation(@PathVariable("locationid") int locationid) {
 		this.locationService.deleteLocation(locationid);
 	}
 	
-	@RequestMapping(value = "/locations", method = RequestMethod.GET)
+	@RequestMapping(value = "/locations", method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Location> getAllLocations() {
 		return this.locationService.getAllLocations();
 	}

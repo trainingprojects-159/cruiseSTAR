@@ -46,7 +46,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		tr.commit();
 	}
 
-	public void deleteSchedule(int scheduleid) {
+	/*public void deleteSchedule(int scheduleid) {
 		
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
@@ -54,7 +54,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		session.delete(e);
 		tr.commit();
 
-	}
+	}*/
 
 	public List<Schedule> getAllSchedules() {
 		
