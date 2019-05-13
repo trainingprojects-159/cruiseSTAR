@@ -28,7 +28,6 @@ import com.mphasis.cruisestar.entities.*;
 @ComponentScan(basePackages="com.mphasis.cruisestar.*")
 public class AppConfig {
 
-	
 	@Bean
 	public DriverManagerDataSource getDatSource() { 
 	DriverManagerDataSource ds=new DriverManagerDataSource();
@@ -56,7 +55,7 @@ public class AppConfig {
 		sessionFactory.setAnnotatedClasses(Ticket.class);
 		Properties properties=new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
-		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql","true");
 		sessionFactory.setHibernateProperties(properties);

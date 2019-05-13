@@ -1,8 +1,9 @@
 package com.mphasis.cruisestar.daoimpl;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.mphasis.cruisestar.daos.AdminDao;
 import com.mphasis.cruisestar.entities.Admin;
 
 @Repository
+@Transactional
 public class AdminDaoImpl implements AdminDao {
 	
 	@Autowired
@@ -25,11 +27,19 @@ public class AdminDaoImpl implements AdminDao {
 	public Admin login(String adminname, String password)
 	{
 		Session session=sessionFactory.getCurrentSession();
+		//Transaction tr=session.beginTransaction();
 		TypedQuery<Admin> query=session.createQuery("from Admin where adminname =: adminname and password =: password");
-		query.setParameter("username", adminname);
+		query.setParameter("adminname", adminname);
 		query.setParameter("password", password);
-		Admin admin = (Admin) query.getSingleResult();
+		Admin admin;
+		try {
+		admin= query.getSingleResult();
+		}catch(NoResultException e) {
+			throw new NoResultException();
+		}
+		//tr.commit();
 		return admin;
 	}
+
 
 }

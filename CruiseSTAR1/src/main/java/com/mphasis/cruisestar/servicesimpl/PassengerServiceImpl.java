@@ -20,18 +20,21 @@ public class PassengerServiceImpl implements PassengerService {
 	}
 
 	public List<Passenger> getAllPassengersList() throws ShipException {
-		
 		return passengerDao.getAllPassengers();
 	}
 
 	public Passenger getPassengerByTheirId(int passengerid) throws ShipException {
-		
+		if(passengerid!=0)
 		return passengerDao.getPassengerById(passengerid);
+		else
+		throw new ShipException("Passenger ID is not Invalid");	
 	}
 
 	public void insertPassenger(Passenger passenger) throws ShipException {
+		if(passenger!=null)
 		passengerDao.addPassenger(passenger);
-
+		else
+		throw new ShipException("Passenger is not valid");
 	}
 
 }

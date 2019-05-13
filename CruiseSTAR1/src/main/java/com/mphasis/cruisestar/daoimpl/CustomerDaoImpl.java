@@ -1,5 +1,6 @@
 package com.mphasis.cruisestar.daoimpl;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,7 @@ import com.mphasis.cruisestar.daos.CustomerDao;
 import com.mphasis.cruisestar.entities.Customer;
 
 @Repository
+@Transactional
 public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	SessionFactory sessionFactory;

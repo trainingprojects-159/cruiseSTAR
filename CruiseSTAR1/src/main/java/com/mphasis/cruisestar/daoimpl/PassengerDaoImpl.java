@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.mphasis.cruisestar.daos.PassengerDao;
 import com.mphasis.cruisestar.entities.Passenger;
 @Repository
+@Transactional
 public class PassengerDaoImpl implements PassengerDao {
 	@Autowired
 	SessionFactory sessionFactory;
@@ -25,18 +26,18 @@ public class PassengerDaoImpl implements PassengerDao {
 	
 	public List<Passenger> getAllPassengers() {
 		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		List<Passenger> passengers = session.createQuery("from Passenger",Passenger.class).list();
-		transaction.commit();
+	//	transaction.commit();
 		session.close();
 		return passengers;
 	}
 
 	public Passenger getPassengerById(int passengerid) {
 		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		Passenger p = (Passenger)session.get(Passenger.class, passengerid);
-		transaction.commit();
+	//	transaction.commit();
 		session.close();
 		return p;
 		
@@ -46,10 +47,10 @@ public class PassengerDaoImpl implements PassengerDao {
 	public void addPassenger(Passenger passenger) {
 	
 		Session session = sessionFactory.openSession();	
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		session.save(passenger);
 		session.close();
-		transaction.commit();
+	//	transaction.commit();
 		
 		
 	}

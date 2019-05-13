@@ -28,12 +28,9 @@ public class TestAdminDao {
 	AdminDao adminDao;
 	@Autowired
 	PassengerDao passengerDao; 
-
 	@Test
 	public void test() throws ShipException{
-		/*Admin admin=adminDao.login("ss", "123");
-		assertNull(admin);
-		*/
+	
 		Admin admin=adminDao.login("Admin", "123");
 		assertEquals(admin.getAdminname(),"Admin");
 		assertEquals(admin.getPassword(),"123");
